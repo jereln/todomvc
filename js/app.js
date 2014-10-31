@@ -40,6 +40,8 @@ jQuery(function ($) {
 
 	var App = {
 		init: function () {
+			this.todos = util.store('todos-jquery');
+			console.log(this.todos);
 			$.ajaxSetup({
 			  headers: {
 			    Authorization:
@@ -58,8 +60,7 @@ jQuery(function ($) {
 			    });
 			  });
 			});
-			this.todos = util.store('todos-jquery');
-			console.log(this.todos);
+			console.log(that.todos);
 			this.cacheElements();
 			this.bindEvents();
 
