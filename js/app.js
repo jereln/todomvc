@@ -40,7 +40,26 @@ jQuery(function ($) {
 
 	var App = {
 		init: function () {
+			$.ajaxSetup({
+			  headers: {
+			    Authorization:
+			    "token 7f7e9c1b06a09ba926b50ed6313b0b3b186f8b75"
+			  }
+			});
+
+			var that = this; 
+
+			$.getJSON("https://api.github.com/issues", function (data) {
+			  $.each(data, function (key, value){
+			    that.todos.push({
+			      id: value.id,
+			      title: value.title,
+			      completed: (value.state == 'open' ? false : true)
+			    });
+			  });
+			});
 			this.todos = util.store('todos-jquery');
+			console.log(this.todos);
 			this.cacheElements();
 			this.bindEvents();
 
@@ -118,24 +137,6 @@ jQuery(function ($) {
 		getFilteredTodos: function () {
 			if (this.filter === 'active') {
 				return this.getActiveTodos();
-	      $.ajaxSetup({
-	        headers: {
-	          Authorization:
-	          "token 7f7e9c1b06a09ba926b50ed6313b0b3b186f8b75"
-	        }
-	      });
-
-	      var that = this; 
-
-	      $.getJSON("https://api.github.com/issues", function (data) {
-	        $.each(data, function (key, value){
-	          that.todos.push({
-	            id: value.id,
-	            title: value.title,
-	            completed: (value.state == 'open' ? false : true)
-	          });
-	        });
-	      });
 			}
 
 			if (this.filter === 'completed') {
@@ -223,6 +224,9 @@ jQuery(function ($) {
 		destroy: function (e) {
 			this.todos.splice(this.indexFromEl(e.target), 1);
 			this.render();
+		},
+		getIssues: function() {
+
 		}
 	};
 
