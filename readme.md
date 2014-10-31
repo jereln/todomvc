@@ -1,5 +1,11 @@
 # jQuery TodoMVC Example
 
+##GitHub API Integration
+I added a feature that allows me to pull all my open GitHub issues and add it to the ToDo list. This was accomplished by sending a GET request to the GitHub API and pushing my issues into the current list of ToDos. I struggled with getting the issues to load when I wanted and preventing duplicates to show up in the database.
+
+##Resources
+https://developer.github.com/v3/
+
 > jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.
 
 > _[jQuery - jquery.com](http://jquery.com)_
